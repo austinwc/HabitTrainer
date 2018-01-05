@@ -17,6 +17,7 @@
 
         <ImageView
             android:id="@+id/iv_icon"
+            android:src="@drawable/water"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="16dp"
