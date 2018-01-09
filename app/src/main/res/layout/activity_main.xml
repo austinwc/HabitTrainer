@@ -21,8 +21,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:layout_marginRight="16dp"
-            android:layout_width="32dp"
-            android:layout_height="32dp" />
+            android:layout_width="64dp"
+            android:layout_height="64dp" />
 
         <TextView
             android:id="@+id/tv_title"
@@ -35,7 +35,6 @@
 
         <TextView
             android:id="@+id/tv_description"
-            android:text="A refreshing glass of water gets you hydrated"
             android:layout_toRightOf="@id/iv_icon"
             android:layout_below="@+id/tv_title"
             android:layout_width="wrap_content"
