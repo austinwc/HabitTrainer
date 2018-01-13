@@ -1,9 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.christaustin.habittrainer.CreateHabitActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <EditText
+        android:padding="8dp"
+        android:id="@+id/et_title"
+        android:hint="@string/eat_an_apple"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:padding="8dp"
+        android:id="@+id/et_description"
+        android:inputType="textMultiLine"
+        android:lines="2"
+        android:hint="@string/eat_apple_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_choose_image"
+        android:text="@string/choose_image"
+        android:onClick="chooseImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:contentDescription="@string/selected_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    
+    <Button
+        android:id="@+id/btn_save"
+        android:text="@string/save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_error"
+        android:visibility="invisible"
+        android:textColor="#E53935"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
