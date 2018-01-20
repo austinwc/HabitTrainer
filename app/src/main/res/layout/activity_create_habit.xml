@@ -41,10 +41,12 @@
     <Button
         android:id="@+id/btn_save"
         android:text="@string/save"
+        android:onClick="saveHabit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
+        android:padding="8dp"
         android:id="@+id/tv_error"
         android:visibility="invisible"
         android:textColor="#E53935"

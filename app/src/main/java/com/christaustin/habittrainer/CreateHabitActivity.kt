@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import kotlinx.android.synthetic.main.activity_create_habit.*
 import java.io.IOException
 
@@ -16,6 +17,7 @@ class CreateHabitActivity : AppCompatActivity() {
 
     private val TAG = CreateHabitActivity::class.java.simpleName
     private val CHOOSE_IMAGE_REQUEST = 1
+    private var imageBitmap: Bitmap? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,25 @@ class CreateHabitActivity : AppCompatActivity() {
         Log.d(TAG, "Intent to choos an image sent...")
     }
 
+    fun saveHabit(v: View) {
+        if (et_title.isBlank() || et_description.isBlank()) {
+            Log.d(TAG, "No habit stored: There's a title or description missing")
+            displayErrorMessage("Your habit needs an engaging title and description")
+            return
+        } else if (imageBitmap == null) {
+            displayErrorMessage("Add a motivating picture to your habit")
+            Log.d(TAG, "No habit stored: Image bitmap missing")
+            return
+        }
+
+        // Store the habit
+    }
+
+    private fun displayErrorMessage(message: String) {
+        tv_error.text = message
+        tv_error.visibility = View.VISIBLE
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -43,6 +64,7 @@ class CreateHabitActivity : AppCompatActivity() {
             val bitmap = tryReadBitmap(data.data)
 
             bitmap?.let {
+                this.imageBitmap = bitmap
                 iv_image.setImageBitmap(bitmap)
                 Log.d(TAG, "Read image bitmap and updated image view")
             }
@@ -58,3 +80,6 @@ class CreateHabitActivity : AppCompatActivity() {
        }
     }
 }
+
+private fun EditText.isBlank() = this.text.toString().isBlank()
+
