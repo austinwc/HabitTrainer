@@ -19,9 +19,11 @@ class HabitDbTable(context: Context) {
         val db = dbHelper.writableDatabase
 
         val values = ContentValues()
-        values.put(HabitEntry.TITLE_COL, habit.title)
-        values.put(HabitEntry.DESCR_COL, habit.description)
-        values.put(HabitEntry.IMAGE_COL, toByteArray(habit.image))
+        with (values) {
+            put(HabitEntry.TITLE_COL, habit.title)
+            put(HabitEntry.DESCR_COL, habit.description)
+            put(HabitEntry.IMAGE_COL, toByteArray(habit.image))
+        }
 
         val id = db.transaction {
             insert(HabitEntry.TABLE_NAME, null, values)
