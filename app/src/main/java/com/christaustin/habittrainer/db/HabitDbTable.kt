@@ -2,6 +2,7 @@ package com.christaustin.habittrainer.db
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -40,7 +41,7 @@ class HabitDbTable(context: Context) {
         val order = "${HabitEntry._ID} ASC"
         val db = dbHelper.readableDatabase
 
-        val cursor = db.query(HabitEntry.TABLE_NAME, cols, null, null, null, null, order)
+        val cursor = db.doQuery(HabitEntry.TABLE_NAME, cols, orderBy = order)
 
         val habits = mutableListOf<Habit>()
 
@@ -63,6 +64,12 @@ class HabitDbTable(context: Context) {
         bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream)
         return stream.toByteArray()
     }
+}
+
+private fun SQLiteDatabase.doQuery(table: String, columns: Array<String>, selection: String? = null,
+                                   selectionArgs: Array<String>? = null, groupBy: String? = null,
+                                   having: String? = null, orderBy: String? = null): Cursor {
+    return query(table, columns, selection, selectionArgs, groupBy, having, orderBy)
 }
 
 private inline fun <T> SQLiteDatabase.transaction(function: SQLiteDatabase.() -> T): T {
