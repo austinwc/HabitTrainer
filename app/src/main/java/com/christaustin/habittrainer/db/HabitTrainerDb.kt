@@ -14,7 +14,7 @@ class HabitTrainerDb(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             "${HabitEntry._ID} INTEGER PRIMARY KEY," +
             "${HabitEntry.TITLE_COL} TEXT," +
             "${HabitEntry.DESCR_COL} TEXT," +
-            "${HabitEntry.IMAGE_COL} BLOB," +
+            "${HabitEntry.IMAGE_COL} BLOB" +
             ")"
 
     private val SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS ${HabitEntry.TABLE_NAME}"
